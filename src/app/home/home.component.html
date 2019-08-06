@@ -1,0 +1,70 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand text-white">LCM CALC</a>
+  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col m-5">
+      <div class="row" *ngIf="lcmHistory" style="width:100%">
+        <li class="list-group-item list-group-item-info" style="width:25rem"><strong>History</strong></li>
+        <ul class="list-group" style="width:25rem" *ngFor="let lh of lcmHistory">
+          <li class="list-group-item list-group-item-secondary tex-center"><strong>Input:</strong> {{lh.input}}
+            <strong>Result:</strong> {{lh.result}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col m-5">
+      <div class="row">
+        <ul class="list-group" style="width:30rem" *ngIf="userDetails">
+          <li class="list-group-item list-group-item-info">Welcome {{userDetails.fullName}} !</li>
+          <li class="list-group-item list-group-item-info">ID: {{userDetails.id}}</li>
+        </ul>
+      </div>
+      <br />
+      <div class="row">
+        <ul class="list-group" style="width:30rem" *ngIf="userDetails">
+          <li class="list-group-item list-group-item-primary">
+            <h5>Least Common Multiple Calculator</h5>
+          </li>
+<!-- 
+          <li class="list-group-item list-group-item-info">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="euclin" (change)="service.choice(value)">
+              <label class="form-check-label" for="inlineRadio1">Euclidean Algorithm</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="fact" (change)="service.choice(value)">
+              <label class="form-check-label" for="inlineRadio2">Prime Factorization Algorithm</label>
+            </div>
+          </li> -->
+
+          <li class="list-group-item">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" [(ngModel)]="value" placeholder="Enter values seperated by comma"
+                aria-label="" aria-describedby="calc">
+              <div class="input-group-append">
+                <button class="btn btn-success" type="button" id="calc" (click)="onCalculate(value)">Calculate</button>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-success" *ngIf="lcm">
+            <h6>LCM = {{lcm}}</h6>
+          </li>
+          <li class="list-group-item list-group-item-light">
+            <p>
+              In arithmetic and number theory, the least common multiple, lowest common multiple, or smallest common
+              multiple of two integers a and b, usually denoted by LCM(a, b), is the smallest positive integer that is
+              divisible by both a and b. Since division of integers by zero is undefined, this definition has meaning
+              only
+              if a and b are both different from zero.<br /><br />The LCM is the "lowest common denominator" (LCD) that
+              can be used before fractions can be added, subtracted or compared. The LCM of more than two integers is
+              also
+              well-defined: it is the smallest positive integer that is divisible by each of them.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
